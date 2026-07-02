@@ -66,6 +66,19 @@
   .st.q{background:#eef0f4;color:#6b7384}
   .invsum{margin-top:12px;background:var(--amber-l);border:1px solid #f0d9af;border-left:4px solid var(--amber);border-radius:8px;padding:10px 13px;font-size:13px}
   .invsum b{color:var(--amber)}
+  /* 大項摺疊 */
+  details.fold{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.04);overflow:hidden}
+  details.fold>summary{cursor:pointer;list-style:none;padding:15px 20px;font-size:17px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:9px}
+  details.fold>summary::-webkit-details-marker{display:none}
+  details.fold>summary:before{content:"▸";color:var(--green);font-size:14px;flex:none}
+  details.fold[open]>summary:before{content:"▾"}
+  details.fold[open]>summary{border-bottom:1px solid var(--line)}
+  details.fold>summary:hover{background:var(--green-l)}
+  .fold .foldbody{padding:16px 20px 8px}
+  .fold .foldbody>.panel{border:none;box-shadow:none;padding:0;margin:0;background:transparent}
+  .foldctrl{display:flex;gap:8px;margin:0 0 14px}
+  .foldctrl button{border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:99px;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--muted)}
+  .foldctrl button:hover{background:var(--green-l);color:var(--green-d);border-color:var(--green-l)}
 
   /* 進度 */
   .overall{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
@@ -166,8 +179,10 @@
   </div>
 
   <!-- 加入會員 -->
+  <div class="foldctrl"><button onclick="foldAll(true)">＋ 全部展開</button><button onclick="foldAll(false)">－ 全部收合</button></div>
+
+  <h2 class="sec">① 平台加入會員需準備的資料</h2>
   <div class="panel memcard">
-    <h2>① 平台加入會員需準備的資料</h2>
     <p class="hint">註冊會員時就要上傳「公司／商業登記或其他設立許可、登記、執照之證明文件」。先把這份備好，才能開始後面各產品的申請。</p>
     <div class="kv">
       <div class="k">應備文件</div>
@@ -186,8 +201,8 @@
   </div>
 
   <!-- 品項判定原則 -->
+  <h2 class="sec">② 品項怎麼分</h2>
   <div class="panel">
-    <h2>② 品項怎麼分</h2>
     <div class="rulebox">
       <div class="rule b21"><div class="code">2-1 容器</div><div class="ds">瓶、罐、桶、杯、盒等<b>盛裝用容器</b>。一定要附<b>應回收容器責任業者登記</b>。再生料算在「容器本體」。</div></div>
       <div class="rule b22"><div class="code">2-2 再生塑膠物品</div><div class="ds">容器/包裝/粒料<b>以外</b>的再生塑膠物品。證明<b>再生料佔整體塑膠 ≥25%</b>。大豐多數產品走這條。</div></div>
@@ -211,8 +226,8 @@
   </div>
 
   <!-- 共通文件 -->
+  <h2 class="sec">③ 共通文件（12 項每一件都要）</h2>
   <div class="panel">
-    <h2>③ 共通文件（12 項每一件都要）</h2>
     <p class="hint">每一項產品都是「一產品一份」，以下這組附表每件都要各備一份；勾選會自動存在瀏覽器。</p>
     <ul class="ck common-list">
       <li><input type="checkbox" id="cm1"><label for="cm1"><b>附表 2-1</b> 使用循環標誌申請書（線上填、網站提出者免上傳）</label></li>
@@ -506,7 +521,28 @@
     });
   }
 
-  load();prog();attachForms();
+  // ===== 把 ①~⑧ 每一大項包成可摺疊（預設收合）=====
+  function foldSections(){
+    const wrap=document.querySelector('.wrap');
+    const heads=[...wrap.querySelectorAll('h2.sec')];
+    heads.forEach(h=>{
+      const det=document.createElement('details');
+      det.className='fold';               // 無 open 屬性 → 預設收合
+      const sum=document.createElement('summary');
+      sum.innerHTML=h.innerHTML;
+      const body=document.createElement('div');
+      body.className='foldbody';
+      let node=h.nextElementSibling;
+      while(node && node.tagName!=='FOOTER' && !(node.tagName==='H2' && node.classList.contains('sec'))){
+        const nx=node.nextElementSibling; body.appendChild(node); node=nx;
+      }
+      det.appendChild(sum); det.appendChild(body);
+      h.parentNode.insertBefore(det,h); h.remove();
+    });
+  }
+  function foldAll(open){document.querySelectorAll('details.fold').forEach(d=>d.open=open);}
+
+  load();prog();attachForms();foldSections();
 </script>
 </body>
 </html>
