@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>循環標誌申請文件 Dashboard｜大豐・12 產品（0702）</title>
+<style>
+  :root{
+    --green:#2e7d52; --green-l:#e7f3ec; --green-d:#1b5e3a;
+    --amber:#c77d18; --amber-l:#fdf3e3; --red:#c0392b; --red-l:#fbeae8;
+    --blue:#2c6e9b; --blue-l:#e8f1f7; --grey:#8a93a8;
+    --ink:#1f2a24; --muted:#667; --line:#dce5df; --bg:#f4f7f5; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  header{background:linear-gradient(120deg,var(--green-d),var(--green));color:#fff;padding:28px 32px}
+  header h1{margin:0 0 6px;font-size:24px}
+  header .sub{opacity:.92;font-size:13.5px}
+  .wrap{max-width:1120px;margin:0 auto;padding:22px 20px 70px}
+  h2.sec{font-size:18px;margin:28px 0 12px;display:flex;align-items:center;gap:8px}
+  .hint{color:var(--muted);font-size:13px;margin:0 0 14px}
+
+  .banner{border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:14px;border:1px solid;background:var(--green-l);border-color:#cfe6d8}
+  .banner b{color:var(--green-d)}
+  .banner a{color:var(--green-d)}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .panel h2{margin:0 0 4px;font-size:18px}
+
+  /* 會員資料卡 */
+  .memcard{border-left:5px solid var(--blue);background:#fbfdff}
+  .kv{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;font-size:13.5px;margin-top:10px}
+  .kv .k{color:var(--muted);font-weight:600}
+  .fmt{display:inline-block;background:var(--blue-l);color:var(--blue);border-radius:6px;padding:2px 8px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}
+  .egbox{background:#fff;border:1px dashed var(--blue);border-radius:8px;padding:8px 12px;margin-top:8px;font-size:13px}
+  .egbox code{background:var(--blue-l);padding:1px 6px;border-radius:5px;color:var(--blue)}
+
+  /* 判定原則 */
+  .rulebox{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:820px){.rulebox{grid-template-columns:1fr}}
+  .rule{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:#fcfdfc}
+  .rule.b21{border-top:4px solid var(--blue)}
+  .rule.b22{border-top:4px solid var(--green)}
+  .rule.b23{border-top:4px solid var(--amber)}
+  .rule .code{font-size:16px;font-weight:800}
+  .rule.b21 .code{color:var(--blue)}.rule.b22 .code{color:var(--green-d)}.rule.b23 .code{color:var(--amber)}
+  .rule .ds{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .gate{background:var(--amber-l);border:1px solid #f0d9af;border-left:4px solid var(--amber);border-radius:8px;padding:10px 13px;margin-top:12px;font-size:13px}
+  .gate b{color:var(--amber)}
+
+  /* 進度 */
+  .overall{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .overall .bar{height:11px;background:#eef2ef;border-radius:99px;overflow:hidden;margin:7px 0 4px}
+  .overall .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),#4cae7a);transition:width .3s}
+  .overall .t{font-size:13px;color:var(--muted)}
+  .reset{float:right;font-size:12px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:7px;padding:5px 11px;cursor:pointer}
+
+  /* 篩選 */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .filters button{border:1px solid var(--line);background:#fff;padding:7px 14px;border-radius:99px;cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)}
+  .filters button.on{background:var(--green);color:#fff;border-color:var(--green)}
+
+  /* 產品卡 */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:820px){.cards{grid-template-columns:1fr}}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.04);border-top:5px solid var(--green)}
+  .pcard[data-cat="21"]{border-top-color:var(--blue)}
+  .pcard[data-cat="22"]{border-top-color:var(--green)}
+  .pcard[data-cat="tbd"]{border-top-color:var(--grey)}
+  .pcard.hide{display:none}
+  .phead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:4px}
+  .pname{font-weight:800;font-size:15.5px}
+  .pname .no{color:var(--muted);font-weight:700;font-size:13px;margin-right:4px}
+  .pbadge{font-size:12px;font-weight:800;padding:3px 10px;border-radius:99px;white-space:nowrap;flex:none}
+  .b21bg{background:var(--blue-l);color:var(--blue)}
+  .b22bg{background:var(--green-l);color:var(--green-d)}
+  .tbdbg{background:#eef0f4;color:var(--grey)}
+  .why{font-size:12.5px;color:var(--muted);margin:2px 0 8px}
+  .risk{background:var(--red-l);border:1px solid #f0c9c3;border-left:4px solid var(--red);border-radius:8px;padding:7px 10px;margin-bottom:10px;font-size:12.5px}
+  .risk b{color:var(--red)}
+  .warn{background:var(--amber-l);border:1px solid #f0d9af;border-left:4px solid var(--amber);border-radius:8px;padding:7px 10px;margin-bottom:10px;font-size:12.5px}
+  .warn b{color:var(--amber)}
+  .doclab{font-size:11.5px;font-weight:800;color:var(--green-d);background:var(--green-l);border-radius:5px;padding:2px 8px;display:inline-block;margin:2px 0 6px}
+  details.explain{background:var(--blue-l);border:1px solid #c8ddec;border-radius:8px;padding:0 12px;margin-bottom:10px;font-size:12.5px}
+  details.explain>summary{cursor:pointer;font-weight:700;color:var(--blue);padding:8px 0;list-style:none;outline:none}
+  details.explain>summary::-webkit-details-marker{display:none}
+  details.explain>summary:before{content:"▸ ";}
+  details.explain[open]>summary:before{content:"▾ ";}
+  details.explain .body{padding:2px 0 12px;line-height:1.6}
+  details.explain .body b{color:var(--blue)}
+  details.explain .body ul{margin:6px 0;padding-left:18px}
+  details.explain .body li{margin:3px 0}
+  ul.ck{list-style:none;margin:0;padding:0}
+  ul.ck li{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+  ul.ck li:last-child{border-bottom:0}
+  ul.ck input{margin-top:3px;width:16px;height:16px;accent-color:var(--green);flex:none;cursor:pointer}
+  ul.ck label{cursor:pointer;flex:1}
+  li.done label{text-decoration:line-through;color:#9aa}
+  .pmini{font-size:12px;color:var(--muted);margin-top:8px;text-align:right}
+
+  /* 共通文件 */
+  .common-list{columns:2;column-gap:24px}
+  @media(max-width:680px){.common-list{columns:1}}
+  .common-list li{break-inside:avoid}
+
+  /* 地雷 */
+  .pit li{padding:8px 0 8px 28px;position:relative;border-bottom:1px dashed var(--line);font-size:13.5px;list-style:none}
+  .pit ul{margin:0;padding:0}
+  .pit li:last-child{border-bottom:0}
+  .pit li:before{content:"⚠️";position:absolute;left:0;top:8px}
+  .pit b{color:var(--red)}
+  /* 核備名單表 */
+  .petcard{border-left:5px solid var(--amber);background:#fffdf8}
+  table.pet{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+  table.pet th,table.pet td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  table.pet th{background:var(--amber-l);color:var(--amber);font-weight:700;white-space:nowrap}
+  table.pet td .co{font-weight:700}
+  table.pet td .fac{color:var(--muted);font-size:12px}
+  table.pet code{background:#f0f3f0;padding:1px 6px;border-radius:5px;font-size:12.5px}
+  .petnote{font-size:12.5px;color:var(--muted);margin-top:10px}
+  /* 附表圖片摺疊框 */
+  details.form{margin:6px 0 2px;border:1px solid #cfe0d6;border-radius:8px;background:#f3f9f5}
+  details.form>summary{cursor:pointer;font-weight:700;color:var(--green-d);padding:7px 10px;list-style:none;font-size:12.5px;outline:none}
+  details.form>summary::-webkit-details-marker{display:none}
+  details.form>summary:before{content:"▸ 📄 "}
+  details.form[open]>summary:before{content:"▾ 📄 "}
+  details.form .formbody{padding:4px 8px 10px}
+  details.form .formbody .pg{font-size:11px;color:var(--muted);margin:8px 0 2px}
+  details.form .formbody img{display:block;width:100%;max-width:660px;margin:2px auto 4px;border:1px solid var(--line);border-radius:4px;box-shadow:0 1px 5px rgba(0,0,0,.1)}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:16px 10px}
+  a{color:var(--green-d)}
+  @media print{.reset,.filters{display:none}.pcard.hide{display:block!important}body{background:#fff}}
+</style>
+</head>
+<body>
+<header>
+  <h1>♺ 循環標誌申請文件 Dashboard｜大豐・塑膠類 12 產品</h1>
+  <div class="sub">依資源循環署 技術規格正式公告（115/5/28 生效）＋塑膠類申請指引＋115/6/30 書函（環循永字第1156114038號）整理｜線上申請自 <b>115/7/1 08:00 開放</b>｜製作 2026-07-02</div>
+</header>
+
+<div class="wrap">
+
+  <div class="banner">
+    ✅ <b>已正式開放線上申請</b>（115/7/1 上午 8 時起）。申請平台：<a href="https://tcpip.moenv.gov.tw/" target="_blank">循環產品及服務採購推動媒合平台 tcpip.moenv.gov.tw</a>；
+    指引下載：<a href="https://tcpip.moenv.gov.tw/source/category-9/post-133" target="_blank">category-9／post-133</a>。
+    <b>需先註冊會員 → 登入 → 進入循環標誌申請頁面 → 一產品一份送出</b>。
+  </div>
+
+  <!-- 加入會員 -->
+  <div class="panel memcard">
+    <h2>① 平台加入會員需準備的資料</h2>
+    <p class="hint">註冊會員時就要上傳「公司／商業登記或其他設立許可、登記、執照之證明文件」。先把這份備好，才能開始後面各產品的申請。</p>
+    <div class="kv">
+      <div class="k">應備文件</div>
+      <div>公司或商業登記，或其他相關<b>設立許可、登記、執照之證明文件</b></div>
+      <div class="k">可接受檔案格式</div>
+      <div>
+        <span class="fmt">PDF</span><span class="fmt">ODT</span><span class="fmt">DOCX</span>
+        <span class="fmt">ODS</span><span class="fmt">XLSX</span><span class="fmt">PNG</span><span class="fmt">JPG</span>
+      </div>
+      <div class="k">檔名規則</div>
+      <div><b>單位名稱-登記種類</b></div>
+    </div>
+    <div class="egbox">
+      📄 檔名範例：<code>循環公司-公司登記</code>　<code>幸福基金會-法人登記</code>　（大豐可用：<code>大豐環保-公司登記</code> 或 <code>大豐環保-高雄廠工廠登記</code>）
+    </div>
+  </div>
+
+  <!-- 品項判定原則 -->
+  <div class="panel">
+    <h2>② 品項怎麼分</h2>
+    <div class="rulebox">
+      <div class="rule b21"><div class="code">2-1 容器</div><div class="ds">瓶、罐、桶、杯、盒等<b>盛裝用容器</b>。一定要附<b>應回收容器責任業者登記</b>。再生料算在「容器本體」。</div></div>
+      <div class="rule b22"><div class="code">2-2 再生塑膠物品</div><div class="ds">容器/包裝/粒料<b>以外</b>的再生塑膠物品。證明<b>再生料佔整體塑膠 ≥25%</b>。大豐多數產品走這條。</div></div>
+      <div class="rule b23"><div class="code">2-3 單一材質</div><div class="ds">非容器、主打單一材質。要做 FTIR/DSC/TGA <b>且不採計再生料</b>，較費工，故一般不選。</div></div>
+    </div>
+    <div class="gate">
+      ⚠️ <b>2-2 兩個門檻要同時過</b>：①<b>資格門檻</b>—含塑膠部件的物品，塑膠須佔整體總重 <b>≥50%</b>（金屬、紙、矽膠都不算塑膠）；
+      ②<b>技術門檻</b>—再生料 ÷ <u>物品塑膠部件總重</u> <b>≥25%</b>。<br>
+      💡 <b>省事關鍵</b>：若取得「<b>物品整體</b>」第三方驗證（載明整體再生料含量），可免附前一季的生產(1-2-2)／庫存(1-2-3)／採購(1-2-4)紀錄。
+    </div>
+  </div>
+
+  <!-- 共通文件 -->
+  <div class="panel">
+    <h2>③ 共通文件（12 項每一件都要）</h2>
+    <p class="hint">每一項產品都是「一產品一份」，以下這組附表每件都要各備一份；勾選會自動存在瀏覽器。</p>
+    <ul class="ck common-list">
+      <li><input type="checkbox" id="cm1"><label for="cm1"><b>附表 2-1</b> 使用循環標誌申請書（線上填、網站提出者免上傳）</label></li>
+      <li><input type="checkbox" id="cm2"><label for="cm2"><b>附表 2-2</b> 申請規格品項明細（線上填、勾對應品項）</label></li>
+      <li><input type="checkbox" id="cm3"><label for="cm3"><b>附表 2-3</b> 工廠登記資訊（線上填）＋ 工廠登記證明影本</label></li>
+      <li><input type="checkbox" id="cm4"><label for="cm4"><b>附表 2-4</b> 切結書（<b>蓋公司大小章</b>、兩頁以上加蓋騎縫章、需上傳）</label></li>
+      <li><input type="checkbox" id="cm5"><label for="cm5">未使用列管毒化物／蒙特婁議定書物質聲明（切結書已含）</label></li>
+      <li><input type="checkbox" id="cm6"><label for="cm6">（如有）產品實績、符合國家標準證明</label></li>
+      <li><input type="checkbox" id="cm7"><label for="cm7">檔名照規則「單位名稱-文件種類」</label></li>
+    </ul>
+  </div>
+
+  <!-- 進度 + 篩選 -->
+  <h2 class="sec">④ 12 產品分類與各自應備文件</h2>
+  <div class="overall">
+    <button class="reset" onclick="resetAll()">清除全部勾選</button>
+    <b>📊 整體備料進度</b>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="t" id="progTxt">完成 0 / 0（0%）</div>
+  </div>
+
+  <div class="filters">
+    <button class="on" data-f="all" onclick="flt('all',this)">全部（12）</button>
+    <button data-f="22" onclick="flt('22',this)">2-2 再生塑膠物品（8）</button>
+    <button data-f="21" onclick="flt('21',this)">2-1 容器（2）</button>
+    <button data-f="tbd" onclick="flt('tbd',this)">待確認（2）</button>
+    <button data-f="risk" onclick="flt('risk',this)">⚠️ 有風險（5）</button>
+  </div>
+
+  <p class="hint" style="margin:-4px 0 12px">💡 文件清單中凡標有附表編號者，下方會出現 <b style="color:#1b5e3a">▸ 📄 點開看附表</b> 摺疊框，點開即可看到該附表的實際內容（跨頁的一次顯示多頁），不必另外翻 PDF。</p>
+
+  <div class="cards" id="cards"><!-- JS 產生 --></div>
+
+  <!-- 衛福部 PET 核備名單 -->
+  <h2 class="sec">⑤ 食品接觸 rPET 廠商核備名單（餐具組／隨行杯／餐盒 必查）</h2>
+  <div class="panel petcard">
+    <p class="hint" style="margin-bottom:2px">
+      餐具組（#10）、隨行杯（#11）、餐盒（#12）等<b>接觸食品</b>的 rPET 產品，其再生 PET 酯粒來源工廠必須在衛福部食藥署
+      「供作食品容器具包裝之 PET 再製酯粒原料適宜性」<b>核備名單</b>內。
+      👉 <b>請拿下表去跟我們製作 rPET 產品的供應商確認：他們的再生 PET 料源工廠與工廠登記編號，是否就是名單中的其中一家。</b>
+    </p>
+    <table class="pet">
+      <thead>
+        <tr><th style="width:34px">#</th><th>核備日期</th><th>核備函文號</th><th>公司／工廠</th><th>工廠登記編號</th><th>類別</th><th>回收製程</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>111/12/1</td><td>衛授食字第1111303729號</td><td><span class="co">遠東新世紀股份有限公司</span><span class="fac">／化學纖維總廠</span></td><td><code>99630874</code></td><td>PET</td><td>物理再製</td></tr>
+        <tr><td>2</td><td>112/3/17</td><td>衛授食字第1121300660號</td><td><span class="co">南亞塑膠工業股份有限公司</span><span class="fac">／工三廠</span></td><td><code>99621823</code></td><td>PET</td><td>物理再製</td></tr>
+        <tr><td>3</td><td>112/3/17</td><td>衛授食字第1121300666號</td><td><span class="co">新光合成纖維股份有限公司</span><span class="fac">／中壢廠</span></td><td><code>99623862</code></td><td>PET</td><td>物理再製</td></tr>
+        <tr><td>4</td><td>112/9/19</td><td>衛授食字第1121302503號</td><td><span class="co">寶綠特資源再生科技股份有限公司</span></td><td><code>67002060</code></td><td>PET</td><td>物理再製</td></tr>
+      </tbody>
+    </table>
+    <div class="petnote">
+      ⚠️ 本名單為 <b>112/9/19 版</b>（資料來源：衛福部食藥署核備名單）。核備廠商可能陸續增加，送件前建議再上<b>食藥署</b>確認是否有最新版本；名單以官方公告為準。<br>
+      ✅ 供應商若使用名單內廠商之料源，請一併<b>索取該核備函影本</b>作為申請佐證。
+    </div>
+  </div>
+
+  <!-- 地雷 / 待確認 -->
+  <h2 class="sec">⑥ 送件前務必處理的地雷</h2>
+  <div class="panel pit">
+    <ul>
+      <li><b>筆記本 塑膠佔比恐 &lt;50%</b>：內頁再生紙很重，塑膠封面封底可能達不到 50% → 2-2 資格不足。先秤重；若不足，改走申請書上的「<b>非公告品項自我聲明</b>」（附表 2-4，以『使用再生材料』特性申請）。</li>
+      <li><b>食品接觸的 rPET（餐具組、隨行杯、餐盒）</b>：再生 PET 料源工廠須在<b>衛福部核備名單</b>內（見上方第 ⑤ 節，拿去跟供應商核對料源工廠與登記編號）；或輸入品的符合／自由銷售證明。此為食品級再生料關鍵文件，務必及早確認。</li>
+      <li><b>容器判定（隨行杯）</b>：規格把「容器」排除在 2-2/2-3 外，「杯」算不算容器會決定走 2-1（要責任業者登記）或 2-2 → <b>打電話問署</b>：曾韻璇 (02)2370-5888#30321。（餐盒已確定為容器，走 2-1）</li>
+      <li><b>金屬件的 50% 門檻（手機掛繩、原子筆）</b>：金屬釦／彈簧非塑膠會壓低塑膠佔比，須先秤：塑膠 ÷ 整體 ≥50%，且 rPP 部件 ÷ 塑膠總重 ≥25%。</li>
+      <li><b>噴霧瓶 責任業者登記</b>：走 2-1 一定要附應回收容器責任業者登記表／申報系統查詢截圖，若不確定是否適用，一併問署。</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">⑦ 官方入口</h2>
+  <div class="panel">
+    <ul style="margin:0;padding-left:18px;font-size:13.5px">
+      <li>申請平台：<a href="https://tcpip.moenv.gov.tw/" target="_blank">tcpip.moenv.gov.tw</a>（先註冊會員）｜指引下載：<a href="https://tcpip.moenv.gov.tw/source/category-9/post-133" target="_blank">category-9／post-133</a></li>
+      <li>洽詢：環境部資源循環署　曾韻璇　<b>(02)2370-5888 #30321</b>｜yunhsuan.tseng@moenv.gov.tw</li>
+      <li>技術規格文號（115/5/28 生效）：2-1=…537B／2-2=…537C／2-3=…537D</li>
+    </ul>
+  </div>
+
+  <footer>本 Dashboard 依資料夾內官方文件整理，文件清單對照 115/5/28 正式公告版與塑膠類申請指引。分類含判斷建議，最終品項與容器認定以資源循環署確認為準。｜檔名 0702｜製作 2026-07-02</footer>
+</div>
+
+<script>
+  // ===== 產品資料 =====
+  // cat: 21 / 22 / tbd ; risk:true 會被「有風險」篩選抓到
+  const PRODUCTS=[
+    {id:1,cat:'22',name:'rPP 包包袋子',badge:'2-2',badgeCls:'b22bg',
+      why:'袋身 rPP，織標＋塑膠釦為新料；非容器再生塑膠物品',
+      docs:['附表1-2-1 再生料使用比率說明表（算整體塑膠≥25%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證（建議做物品整體驗證）']},
+    {id:2,cat:'22',name:'rPP 手機掛繩',badge:'2-2',badgeCls:'b22bg',risk:true,
+      why:'繩身 rPP，金屬釦＋織標；非容器物品',
+      risktext:'金屬釦較重，須先秤：塑膠佔整體總重 ≥50% 才有資格',
+      docs:['⚖️ 先秤重：塑膠 ÷ 整體 ≥50%（金屬釦不算塑膠）','附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:3,cat:'22',name:'rPP 識別證盒',badge:'2-2',badgeCls:'b22bg',
+      why:'100% rPP、非容器、單一材質；全塑膠門檻易過',
+      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:4,cat:'22',name:'rPP 證件套',badge:'2-2',badgeCls:'b22bg',
+      why:'100% rPP、非容器；全塑膠門檻易過',
+      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:5,cat:'22',name:'rPP 原子筆',badge:'2-2',badgeCls:'b22bg',risk:true,
+      why:'筆管 rPP，彈簧＋筆芯為新料；非容器物品',
+      risktext:'彈簧金屬＋筆芯新料，須確認塑膠≥50% 且筆管佔塑膠總重≥25%',
+      docs:['⚖️ 先秤重：塑膠 ÷ 整體 ≥50%；筆管(rPP) ÷ 塑膠總重 ≥25%','附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:6,cat:'22',name:'rPP 資料夾',badge:'2-2',badgeCls:'b22bg',
+      why:'100% rPP、非容器；全塑膠門檻易過',
+      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:7,cat:'22',name:'rPP DIY 存錢筒',badge:'2-2',badgeCls:'b22bg',
+      why:'100% rPP、非容器；全塑膠門檻易過',
+      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:8,cat:'tbd',name:'rPP＋再生紙 筆記本',badge:'資格待確認',badgeCls:'tbdbg',risk:true,
+      why:'封面封底 rPP，內頁 FSC 再生紙；紙＋塑膠混合物',
+      risktext:'內頁紙很重，塑膠恐 <50% → 2-2 資格不足；先秤重，或改走非公告品項',
+      docs:['⚖️ 先秤重：塑膠封面封底 ÷ 整本 是否 ≥50%','若 ≥50% → 走 2-2（同其他 2-2 文件）','若 <50% → 改走「非公告品項」路徑（於申請書附表2-2 第二部分填循環特性說明：使用再生材料）','向署確認可行路徑','再生料第三方驗證／再生紙 FSC 證明']},
+    {id:9,cat:'21',name:'rHDPE 噴霧瓶',badge:'2-1',badgeCls:'b21bg',risk:true,
+      why:'瓶身 rHDPE，噴頭/彈簧/蓋為新料；瓶＝容器',
+      risktext:'須辦應回收容器責任業者登記；再生料算在「瓶身本體」',
+      docs:['應回收容器責任業者登記表／申報系統查詢截圖','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']},
+    {id:10,cat:'22',name:'rPET 餐具組（筷/匙）',badge:'2-2',badgeCls:'b22bg',risk:true,
+      why:'餐具非容器；100% rPET',
+      risktext:'食品接觸 → 需衛福部 PET 再製酯粒適宜性核備',
+      docs:['🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
+    {id:11,cat:'tbd',name:'rPET 隨行杯',badge:'品項待確認',badgeCls:'tbdbg',risk:true,
+      why:'100% rPET；「杯」是否算容器須確認',
+      risktext:'容器→2-1（要責任業者登記）；非容器→2-2。且食品接觸需 PET 核備',
+      docs:['📞 向署確認：隨行杯算不算「容器」','🍽️ 衛福部 PET 再製酯粒適宜性核備（食品接觸）','若 2-1：責任業者登記＋附表1-1-1＋成分分析＋再生料驗證','若 2-2：附表1-2-1＋前一季紀錄（或整體驗證）＋成分分析＋再生料驗證']},
+    {id:12,cat:'21',name:'rPET 餐盒',badge:'2-1',badgeCls:'b21bg',risk:true,
+      why:'盒身 rPET，矽膠條為新料；餐盒＝容器',
+      risktext:'須辦應回收容器責任業者登記；食品接觸需衛福部 PET 核備；再生料算在「盒身本體」',
+      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']}
+  ];
+
+  // ===== 2-1 專用說明（應回收容器責任業者登記）=====
+  const EXPLAIN_21=`<details class="explain"><summary>ℹ️ 什麼是「應回收容器責任業者登記」？</summary>
+    <div class="body">
+      台灣資源回收制度<b>既有的法定登記</b>，2-1 容器類申請需檢附此文件。
+      <ul>
+        <li><b>應回收容器</b>：政府公告「用完必須回收」的容器（飲料瓶、清潔劑瓶、食品容器等）。</li>
+        <li><b>責任業者</b>：製造／輸入這些容器、或用容器盛裝販售的業者，依法要向資源循環署<b>登記、按季申報營業量、繳回收清除處理費</b>。</li>
+        <li>附<b>登記表</b>或<b>申報系統查詢結果截圖</b>擇一即可。</li>
+      </ul>
+      <b>對大豐：</b>
+      <ul>
+        <li>①先確認本產品是否屬公告應回收容器</li>
+        <li>②若已登記過（做容器通常都有）→ 抓申報系統查詢截圖即可，免重辦</li>
+        <li>③不確定 → 打電話問署：曾韻璇 (02)2370-5888 #30321</li>
+      </ul>
+    </div>
+  </details>`;
+
+  // ===== 產生卡片 =====
+  const cardsEl=document.getElementById('cards');
+  PRODUCTS.forEach(p=>{
+    const lis=p.docs.map((d,i)=>{
+      const id=`p${p.id}_${i}`;
+      return `<li><input type="checkbox" id="${id}"><label for="${id}">${d}</label></li>`;
+    }).join('');
+    const riskHtml=p.risktext?`<div class="${p.cat==='tbd'?'warn':'risk'}"><b>⚠️ 注意</b>：${p.risktext}</div>`:'';
+    const explainHtml=(p.cat==='21')?EXPLAIN_21:'';
+    cardsEl.insertAdjacentHTML('beforeend',
+      `<div class="pcard" data-cat="${p.cat}" data-risk="${p.risk?1:0}" data-pid="${p.id}">
+        <div class="phead">
+          <div class="pname"><span class="no">#${p.id}</span>${p.name}</div>
+          <span class="pbadge ${p.badgeCls}">${p.badge}</span>
+        </div>
+        <div class="why">${p.why}</div>
+        ${riskHtml}
+        ${explainHtml}
+        <div class="doclab">📎 該品項認定文件</div>
+        <ul class="ck">${lis}</ul>
+        <div class="pmini" data-mini="${p.id}"></div>
+      </div>`);
+  });
+
+  // ===== 勾選 + 進度 (localStorage) =====
+  const KEY='reca_0702_v1';
+  const boxes=()=>[...document.querySelectorAll('input[type=checkbox]')];
+  function row(b){b.closest('li')&&b.closest('li').classList.toggle('done',b.checked);}
+  function save(){const s={};boxes().forEach(b=>s[b.id]=b.checked);localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){const s=JSON.parse(localStorage.getItem(KEY)||'{}');boxes().forEach(b=>{b.checked=!!s[b.id];row(b);});}
+  function prog(){
+    const all=boxes();
+    const n=all.filter(b=>b.checked).length,t=all.length,p=t?Math.round(n/t*100):0;
+    document.getElementById('barFill').style.width=p+'%';
+    document.getElementById('progTxt').textContent=`完成 ${n} / ${t}（${p}%）`;
+    PRODUCTS.forEach(pr=>{
+      const cb=all.filter(b=>b.id.startsWith(`p${pr.id}_`));
+      const cn=cb.filter(b=>b.checked).length;
+      const el=document.querySelector(`[data-mini="${pr.id}"]`);
+      if(el)el.textContent=`${cn} / ${cb.length}`;
+    });
+  }
+  document.addEventListener('change',e=>{if(e.target.matches('input[type=checkbox]')){row(e.target);save();prog();}});
+  function resetAll(){if(confirm('確定清除全部勾選？')){boxes().forEach(b=>{b.checked=false;row(b);});save();prog();}}
+
+  // ===== 篩選 =====
+  function flt(f,btn){
+    document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.pcard').forEach(c=>{
+      let show=true;
+      if(f==='21')show=c.dataset.cat==='21';
+      else if(f==='22')show=c.dataset.cat==='22';
+      else if(f==='tbd')show=c.dataset.cat==='tbd';
+      else if(f==='risk')show=c.dataset.risk==='1';
+      c.classList.toggle('hide',!show);
+    });
+  }
+
+  // ===== 附表圖片對照（第二冊-塑膠類 1150626，逐頁 JPG）=====
+  const FORM_BASE='forms/page-';
+  const FORMS={
+    '1-1-1':{t:'塑膠容器(2-1)檢附資料表暨自我檢核表-使用再生料',p:['0014','0015']},
+    '1-1-2':{t:'塑膠容器(2-1)檢附資料表暨自我檢核表-綠色設計A',p:['0016','0017','0018']},
+    '1-1-3':{t:'塑膠容器(2-1)檢附資料表暨自我檢核表-綠色設計B',p:['0019','0020']},
+    '1-2-1':{t:'塑膠物品再生料使用比率說明表',p:['0023','0024']},
+    '1-2-2':{t:'生產紀錄/內部追溯紀錄表（前一季）',p:['0025']},
+    '1-2-3':{t:'庫存/存貨紀錄表（前一季）',p:['0026']},
+    '1-2-4':{t:'再生料採購、使用、檢驗相關證明文件（前一季）',p:['0027','0028','0029']},
+    '1-3-1':{t:'單一材質自我聲明書（蓋大小章）',p:['0031']},
+    '1-3-2':{t:'單一材質設計塑膠產品照片',p:['0032']},
+    '1-3-3':{t:'單一材質-經實驗室檢驗/第三方認驗證證明',p:['0033']},
+    '2-1':{t:'使用循環標誌申請書（網站提出者免附）',p:['0034']},
+    '2-2':{t:'循環標誌申請規格品項明細（網站提出者免附）',p:['0035','0036']},
+    '2-3':{t:'申請項目對應之工廠登記資訊（網站提出者免附）',p:['0037']},
+    '2-4':{t:'循環標誌申請專用切結書（蓋大小章）',p:['0038','0039','0040']},
+    '2-5':{t:'變更申請書（網站提出者免附）',p:['0041']},
+    '3-1':{t:'循環標誌使用情形說明表（每年3月底回報）',p:['0042']},
+    '3-4':{t:'使用一定比率再生料之塑膠物品抽樣檢驗確認技術規格表',p:['0045','0046']}
+  };
+  function formDetails(code){
+    const f=FORMS[code];if(!f)return '';
+    const imgs=f.p.map((pg,i)=>`${f.p.length>1?`<div class="pg">第 ${i+1} / ${f.p.length} 頁</div>`:''}<img loading="lazy" src="${FORM_BASE}${pg}.jpg" alt="附表${code} 第${i+1}頁">`).join('');
+    return `<details class="form"><summary>點開看附表 ${code}｜${f.t}${f.p.length>1?`（共 ${f.p.length} 頁）`:''}</summary><div class="formbody">${imgs}</div></details>`;
+  }
+  function attachForms(){
+    const re=/附表\s*([0-9]+-[0-9]+(?:-[0-9]+)?(?:\s*[／\/、]\s*[0-9]+-[0-9]+(?:-[0-9]+)?)*)/g;
+    document.querySelectorAll('ul.ck label').forEach(lab=>{
+      const txt=lab.textContent;const seen=new Set();let m;re.lastIndex=0;
+      while((m=re.exec(txt))!==null){
+        m[1].split(/[／\/、\s]+/).forEach(code=>{
+          code=code.trim();
+          if(code && FORMS[code] && !seen.has(code)){seen.add(code);lab.insertAdjacentHTML('beforeend',formDetails(code));}
+        });
+      }
+    });
+  }
+
+  load();prog();attachForms();
+</script>
+</body>
+</html>
