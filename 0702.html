@@ -270,6 +270,9 @@
   // ===== 產品資料 =====
   // cat: 21 / 22 / tbd ; risk:true 會被「有風險」篩選抓到
   const PRODUCTS=[
+    {id:13,cat:'22',name:'rPP 包包袋子（純袋身）',badge:'2-2',badgeCls:'b22bg',
+      why:'無織標、無塑膠釦，100% rPP 單一材質；50% 與 25% 門檻皆輕鬆過（亦可走 2-3 單一材質，但建議 2-2）',
+      docs:['附表1-2-1 再生料使用比率說明表（單一材質、整體再生料 100%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有成品整體驗證可免）','再生料第三方驗證（GRS 粒料＋追溯紀錄，或成品整體驗證）']},
     {id:1,cat:'22',name:'rPP 包包袋子',badge:'2-2',badgeCls:'b22bg',
       why:'袋身 rPP，織標＋塑膠釦為新料；非容器再生塑膠物品',
       docs:['附表1-2-1 再生料使用比率說明表（算整體塑膠≥25%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證（建議做物品整體驗證）']},
@@ -312,10 +315,7 @@
     {id:12,cat:'21',name:'rPET 餐盒',badge:'2-1',badgeCls:'b21bg',risk:true,
       why:'盒身 rPET，矽膠條為新料；餐盒＝容器',
       risktext:'須辦應回收容器責任業者登記；食品接觸需衛福部 PET 核備；再生料算在「盒身本體」',
-      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']},
-    {id:13,cat:'22',name:'rPP 包包袋子（純袋身）',badge:'2-2',badgeCls:'b22bg',
-      why:'無織標、無塑膠釦，100% rPP 單一材質；50% 與 25% 門檻皆輕鬆過（亦可走 2-3 單一材質，但建議 2-2）',
-      docs:['附表1-2-1 再生料使用比率說明表（單一材質、整體再生料 100%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有成品整體驗證可免）','再生料第三方驗證（GRS 粒料＋追溯紀錄，或成品整體驗證）']}
+      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']}
   ];
 
   // ===== 2-1 專用說明（應回收容器責任業者登記）=====
@@ -338,7 +338,7 @@
 
   // ===== 產生卡片 =====
   const cardsEl=document.getElementById('cards');
-  PRODUCTS.forEach(p=>{
+  PRODUCTS.forEach((p,idx)=>{
     const lis=p.docs.map((d,i)=>{
       const id=`p${p.id}_${i}`;
       return `<li><input type="checkbox" id="${id}"><label for="${id}">${d}</label></li>`;
@@ -348,7 +348,7 @@
     cardsEl.insertAdjacentHTML('beforeend',
       `<div class="pcard" data-cat="${p.cat}" data-risk="${p.risk?1:0}" data-pid="${p.id}">
         <div class="phead">
-          <div class="pname"><span class="no">#${p.id}</span>${p.name}</div>
+          <div class="pname"><span class="no">#${idx+1}</span>${p.name}</div>
           <span class="pbadge ${p.badgeCls}">${p.badge}</span>
         </div>
         <div class="why">${p.why}</div>
