@@ -52,6 +52,20 @@
   .vs th,.vs td{border:1px solid #cfe6d8;padding:6px 9px;text-align:left;vertical-align:top}
   .vs th{background:var(--green-l);color:var(--green-d);font-weight:700}
   .vs td:first-child{font-weight:700;color:var(--muted);white-space:nowrap;width:92px}
+  /* 備料盤點表 */
+  .invwrap{overflow-x:auto}
+  table.inv{width:100%;border-collapse:collapse;font-size:12.5px;min-width:680px}
+  table.inv th,table.inv td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  table.inv th{background:var(--green-l);color:var(--green-d);font-weight:700;white-space:nowrap}
+  table.inv td:nth-child(2){text-align:center;white-space:nowrap}
+  table.inv tr.sep td{background:#f6f9f7;font-weight:800;color:var(--green-d)}
+  .st{display:inline-block;font-weight:800;font-size:11.5px;padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .st.ok{background:var(--green-l);color:var(--green-d)}
+  .st.part{background:var(--amber-l);color:var(--amber)}
+  .st.no{background:var(--red-l);color:var(--red)}
+  .st.q{background:#eef0f4;color:#6b7384}
+  .invsum{margin-top:12px;background:var(--amber-l);border:1px solid #f0d9af;border-left:4px solid var(--amber);border-radius:8px;padding:10px 13px;font-size:13px}
+  .invsum b{color:var(--amber)}
 
   /* 進度 */
   .overall{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
@@ -212,7 +226,50 @@
   </div>
 
   <!-- 進度 + 篩選 -->
-  <h2 class="sec">④ 13 產品分類與各自應備文件</h2>
+  <!-- 備料盤點 -->
+  <h2 class="sec">④ 我們的備料盤點（已有 / 待準備）</h2>
+  <div class="panel">
+    <p class="hint" style="margin-bottom:6px">依大豐現有文件與規範盤點。<b>圖例</b>：<span class="st ok">✅ 有現成</span> <span class="st part">⭕ 有底料·要整理成表</span> <span class="st no">❌ 沒有·要取得/製作</span> <span class="st q">❓ 待確認</span>　｜　各附件的實際內容，點下方第 ⑤ 節產品卡的「📄 點開看附表」可展開。</p>
+    <div class="invwrap">
+    <table class="inv">
+      <thead><tr><th>資料項目</th><th>狀態</th><th>我們現有的是什麼</th><th>對應附件／用途</th><th>適用產品</th></tr></thead>
+      <tbody>
+        <tr class="sep"><td colspan="5">A. 公司／資格（每件都要）</td></tr>
+        <tr><td>公司／商業登記證明</td><td><span class="st ok">✅</span></td><td>公司營業登記</td><td>加入會員上傳、切結書資料</td><td>全部</td></tr>
+        <tr><td>工廠登記證明</td><td><span class="st ok">✅</span></td><td><b>全興廠區</b>工廠登記</td><td>附表2-3 ＋ 申請書勾工廠登記</td><td>全部</td></tr>
+        <tr><td>統編／負責人／聯絡人</td><td><span class="st ok">✅</span></td><td>公司基本資料</td><td>申請書 附表2-1</td><td>全部</td></tr>
+
+        <tr class="sep"><td colspan="5">B. 再生料驗證（2-2／2-1 技術核心）</td></tr>
+        <tr><td><b>GRS</b>（粒料階段）</td><td><span class="st ok">✅</span></td><td>驗你們的<b>再生粒子</b>（證明 100% 回收）</td><td>附表1-2-4 表格2（料源驗證）／2-1 附表1-1-1 再生料驗證欄</td><td>所有再生塑膠產品</td></tr>
+        <tr><td><b>RCS</b></td><td><span class="st ok">✅</span></td><td>Recycled Claim Standard</td><td>清單內可用之再生料驗證</td><td>同上</td></tr>
+        <tr><td>GRS「TC 交易證明」載明含量</td><td><span class="st q">❓</span></td><td><b>待確認</b>：拿到的是 SC 還是含含量的 TC</td><td>證明再生料比例要用 <b>TC</b></td><td>2-2／2-1</td></tr>
+        <tr><td>成品「物品整體」驗證</td><td><span class="st no">❌</span></td><td>目前 GRS 只到粒料</td><td>有的話可<b>免附</b>前一季 3 張表</td><td>（日後升級）</td></tr>
+
+        <tr class="sep"><td colspan="5">C. 追溯／紀錄（2-2 走料源驗證時要）</td></tr>
+        <tr><td>再生料採購紀錄（前一季）</td><td><span class="st part">⭕</span></td><td>訂單／發票／運輸單</td><td>附表1-2-4 表格1</td><td>2-2（無整體驗證時）</td></tr>
+        <tr><td>生產／內部追溯紀錄（前一季）</td><td><span class="st part">⭕</span></td><td>工廠生產紀錄</td><td>附表1-2-2</td><td>2-2</td></tr>
+        <tr><td>庫存／存貨紀錄（前一季）</td><td><span class="st part">⭕</span></td><td>進出貨紀錄</td><td>附表1-2-3</td><td>2-2</td></tr>
+        <tr><td>再生料比率計算表</td><td><span class="st no">❌</span></td><td>要依 BOM 逐件填算</td><td>附表1-2-1</td><td>每個 2-2 產品</td></tr>
+
+        <tr class="sep"><td colspan="5">D. 材質／食品接觸／容器（特定品項才要）</td></tr>
+        <tr><td>成分分析／材質報告（無 PVC、材質單一）</td><td><span class="st q">❓</span></td><td><b>待確認</b>（目前應無）</td><td>附表1-1-1 備註（2-1）｜2-3 用 FTIR/DSC/TGA（附表1-3-3）</td><td>噴霧瓶、餐盒</td></tr>
+        <tr><td>衛福部 PET 再製酯粒核備</td><td><span class="st q">❓</span></td><td><b>待確認</b>：rPET 料源工廠是否在 4 家名單內</td><td>附表1-1-1 食品接觸欄（見第 ⑥ 節名單）</td><td>餐具組、隨行杯、餐盒</td></tr>
+        <tr><td>應回收容器責任業者登記／查詢截圖</td><td><span class="st q">❓</span></td><td><b>待確認</b>：是否辦過登記</td><td>2-1 前置文件</td><td>噴霧瓶、餐盒</td></tr>
+
+        <tr class="sep"><td colspan="5">E. 表單與加分資料</td></tr>
+        <tr><td>切結書（蓋公司大小章）</td><td><span class="st no">❌</span></td><td>要製作＋用印</td><td>附表2-4</td><td>全部</td></tr>
+        <tr><td>申請書／品項明細／工廠登記資訊</td><td><span class="st ok">✅</span></td><td>線上系統填</td><td>附表2-1／2-2／2-3（網站填、免上傳）</td><td>全部</td></tr>
+        <tr><td>FDA NOL／CFR FDA／EU No.10</td><td><span class="st ok">✅</span></td><td>國外食品接觸報告</td><td><b>輔助</b>（非台灣衛福部核備）</td><td>食品接觸產品</td></tr>
+        <tr><td>ISO 9001/14001/45001/14067/27001、減碳75%、Sedex</td><td><span class="st ok">✅</span></td><td>管理系統／碳足跡</td><td>有利審查加分（選附）</td><td>全部</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="invsum">
+      🎯 <b>現在最該去問／查的 4 件「待確認」</b>：①GRS 拿到的是否為<b>載明含量的 TC</b>　②<b>成分分析/材質報告</b>有沒有（2-1 噴霧瓶、餐盒要）　③rPET 料源工廠是否在<b>衛福部核備名單</b>　④噴霧瓶/餐盒有沒有辦<b>應回收容器責任業者登記</b>。其餘「⭕」的前一季紀錄，請開始按季整理留存。
+    </div>
+  </div>
+
+  <h2 class="sec">⑤ 13 產品分類與各自應備文件</h2>
   <div class="overall">
     <button class="reset" onclick="resetAll()">清除全部勾選</button>
     <b>📊 整體備料進度</b>
@@ -233,7 +290,7 @@
   <div class="cards" id="cards"><!-- JS 產生 --></div>
 
   <!-- 衛福部 PET 核備名單 -->
-  <h2 class="sec">⑤ 食品接觸 rPET 廠商核備名單（餐具組／隨行杯／餐盒 必查）</h2>
+  <h2 class="sec">⑥ 食品接觸 rPET 廠商核備名單（餐具組／隨行杯／餐盒 必查）</h2>
   <div class="panel petcard">
     <p class="hint" style="margin-bottom:2px">
       餐具組（#10）、隨行杯（#11）、餐盒（#12）等<b>接觸食品</b>的 rPET 產品，其再生 PET 酯粒來源工廠必須在衛福部食藥署
@@ -258,18 +315,18 @@
   </div>
 
   <!-- 地雷 / 待確認 -->
-  <h2 class="sec">⑥ 送件前務必處理的地雷</h2>
+  <h2 class="sec">⑦ 送件前務必處理的地雷</h2>
   <div class="panel pit">
     <ul>
       <li><b>筆記本 塑膠佔比恐 &lt;50%</b>：內頁再生紙很重，塑膠封面封底可能達不到 50% → 2-2 資格不足。先秤重；若不足，改走申請書上的「<b>非公告品項自我聲明</b>」（附表 2-4，以『使用再生材料』特性申請）。</li>
-      <li><b>食品接觸的 rPET（餐具組、隨行杯、餐盒）</b>：再生 PET 料源工廠須在<b>衛福部核備名單</b>內（見上方第 ⑤ 節，拿去跟供應商核對料源工廠與登記編號）；或輸入品的符合／自由銷售證明。此為食品級再生料關鍵文件，務必及早確認。</li>
+      <li><b>食品接觸的 rPET（餐具組、隨行杯、餐盒）</b>：再生 PET 料源工廠須在<b>衛福部核備名單</b>內（見上方第 ⑥ 節，拿去跟供應商核對料源工廠與登記編號）；或輸入品的符合／自由銷售證明。此為食品級再生料關鍵文件，務必及早確認。</li>
       <li><b>容器判定（隨行杯）</b>：規格把「容器」排除在 2-2/2-3 外，「杯」算不算容器會決定走 2-1（要責任業者登記）或 2-2 → <b>打電話問署</b>：曾韻璇 (02)2370-5888#30321。（餐盒已確定為容器，走 2-1）</li>
       <li><b>金屬件的 50% 門檻（手機掛繩、原子筆）</b>：金屬釦／彈簧非塑膠會壓低塑膠佔比，須先秤：塑膠 ÷ 整體 ≥50%，且 rPP 部件 ÷ 塑膠總重 ≥25%。</li>
       <li><b>噴霧瓶 責任業者登記</b>：走 2-1 一定要附應回收容器責任業者登記表／申報系統查詢截圖，若不確定是否適用，一併問署。</li>
     </ul>
   </div>
 
-  <h2 class="sec">⑦ 官方入口</h2>
+  <h2 class="sec">⑧ 官方入口</h2>
   <div class="panel">
     <ul style="margin:0;padding-left:18px;font-size:13.5px">
       <li>申請平台：<a href="https://tcpip.moenv.gov.tw/" target="_blank">tcpip.moenv.gov.tw</a>（先註冊會員）｜指引下載：<a href="https://tcpip.moenv.gov.tw/source/category-9/post-133" target="_blank">category-9／post-133</a></li>
