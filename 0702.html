@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>循環標誌申請文件 Dashboard｜大豐・12 產品（0702）</title>
+<title>循環標誌申請文件 Dashboard｜大豐・13 產品（0702）</title>
 <style>
   :root{
     --green:#2e7d52; --green-l:#e7f3ec; --green-d:#1b5e3a;
@@ -134,7 +134,7 @@
 </head>
 <body>
 <header>
-  <h1>♺ 循環標誌申請文件 Dashboard｜大豐・塑膠類 12 產品</h1>
+  <h1>♺ 循環標誌申請文件 Dashboard｜大豐・塑膠類 13 產品</h1>
   <div class="sub">依資源循環署 技術規格正式公告（115/5/28 生效）＋塑膠類申請指引＋115/6/30 書函（環循永字第1156114038號）整理｜線上申請自 <b>115/7/1 08:00 開放</b>｜製作 2026-07-02</div>
 </header>
 
@@ -197,7 +197,7 @@
   </div>
 
   <!-- 進度 + 篩選 -->
-  <h2 class="sec">④ 12 產品分類與各自應備文件</h2>
+  <h2 class="sec">④ 13 產品分類與各自應備文件</h2>
   <div class="overall">
     <button class="reset" onclick="resetAll()">清除全部勾選</button>
     <b>📊 整體備料進度</b>
@@ -206,8 +206,8 @@
   </div>
 
   <div class="filters">
-    <button class="on" data-f="all" onclick="flt('all',this)">全部（12）</button>
-    <button data-f="22" onclick="flt('22',this)">2-2 再生塑膠物品（8）</button>
+    <button class="on" data-f="all" onclick="flt('all',this)">全部（13）</button>
+    <button data-f="22" onclick="flt('22',this)">2-2 再生塑膠物品（9）</button>
     <button data-f="21" onclick="flt('21',this)">2-1 容器（2）</button>
     <button data-f="tbd" onclick="flt('tbd',this)">待確認（2）</button>
     <button data-f="risk" onclick="flt('risk',this)">⚠️ 有風險（5）</button>
@@ -312,7 +312,10 @@
     {id:12,cat:'21',name:'rPET 餐盒',badge:'2-1',badgeCls:'b21bg',risk:true,
       why:'盒身 rPET，矽膠條為新料；餐盒＝容器',
       risktext:'須辦應回收容器責任業者登記；食品接觸需衛福部 PET 核備；再生料算在「盒身本體」',
-      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']}
+      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']},
+    {id:13,cat:'22',name:'rPP 包包袋子（純袋身）',badge:'2-2',badgeCls:'b22bg',
+      why:'無織標、無塑膠釦，100% rPP 單一材質；50% 與 25% 門檻皆輕鬆過（亦可走 2-3 單一材質，但建議 2-2）',
+      docs:['附表1-2-1 再生料使用比率說明表（單一材質、整體再生料 100%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有成品整體驗證可免）','再生料第三方驗證（GRS 粒料＋追溯紀錄，或成品整體驗證）']}
   ];
 
   // ===== 2-1 專用說明（應回收容器責任業者登記）=====
