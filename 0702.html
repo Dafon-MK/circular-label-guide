@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>循環標誌申請文件 Dashboard｜大豐・13 產品（0702）</title>
+<title>循環標誌申請文件 Dashboard｜大豐・10 產品（0721 定案）</title>
 <style>
   :root{
     --green:#2e7d52; --green-l:#e7f3ec; --green-d:#1b5e3a;
@@ -98,6 +98,8 @@
   .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.04);border-top:5px solid var(--green)}
   .pcard[data-cat="21"]{border-top-color:var(--blue)}
   .pcard[data-cat="22"]{border-top-color:var(--green)}
+  .pcard[data-cat="23"]{border-top-color:var(--amber)}
+  .pcard[data-cat="tx"]{border-top-color:#7b5ea7}
   .pcard[data-cat="tbd"]{border-top-color:var(--grey)}
   .pcard.hide{display:none}
   .phead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:4px}
@@ -106,6 +108,8 @@
   .pbadge{font-size:12px;font-weight:800;padding:3px 10px;border-radius:99px;white-space:nowrap;flex:none}
   .b21bg{background:var(--blue-l);color:var(--blue)}
   .b22bg{background:var(--green-l);color:var(--green-d)}
+  .b23bg{background:var(--amber-l);color:var(--amber)}
+  .txbg{background:#efe9f7;color:#7b5ea7}
   .tbdbg{background:#eef0f4;color:var(--grey)}
   .why{font-size:12.5px;color:var(--muted);margin:2px 0 8px}
   .risk{background:var(--red-l);border:1px solid #f0c9c3;border-left:4px solid var(--red);border-radius:8px;padding:7px 10px;margin-bottom:10px;font-size:12.5px}
@@ -166,17 +170,11 @@
 </head>
 <body>
 <header>
-  <h1>♺ 循環標誌申請文件 Dashboard｜大豐・塑膠類 13 產品</h1>
-  <div class="sub">依資源循環署 技術規格正式公告（115/5/28 生效）＋塑膠類申請指引＋115/6/30 書函（環循永字第1156114038號）整理｜線上申請自 <b>115/7/1 08:00 開放</b>｜製作 2026-07-02</div>
+  <h1>♺ 循環標誌申請文件 Dashboard｜大豐・10 產品（塑膠類＋紡織類）</h1>
+  <div class="sub">依資源循環署 技術規格正式公告（115/5/28 生效）＋申請指引第一冊紡織類・第二冊塑膠類（1150626）＋115/6/30 書函（環循永字第1156114038號）整理｜製作 2026-07-02・<b>更新 2026-07-21</b>（品項定案：紡織 2＋容器 3＋單一材質 5）</div>
 </header>
 
 <div class="wrap">
-
-  <div class="banner">
-    ✅ <b>已正式開放線上申請</b>（115/7/1 上午 8 時起）。申請平台：<a href="https://tcpip.moenv.gov.tw/" target="_blank">循環產品及服務採購推動媒合平台 tcpip.moenv.gov.tw</a>；
-    指引下載：<a href="https://tcpip.moenv.gov.tw/source/category-9/post-133" target="_blank">category-9／post-133</a>。
-    <b>需先註冊會員 → 登入 → 進入循環標誌申請頁面 → 一產品一份送出</b>。
-  </div>
 
   <!-- 加入會員 -->
   <div class="foldctrl"><button onclick="foldAll(true)">＋ 全部展開</button><button onclick="foldAll(false)">－ 全部收合</button></div>
@@ -200,39 +198,14 @@
     </div>
   </div>
 
-  <!-- 品項判定原則 -->
-  <h2 class="sec">② 品項怎麼分</h2>
-  <div class="panel">
-    <div class="rulebox">
-      <div class="rule b21"><div class="code">2-1 容器</div><div class="ds">瓶、罐、桶、杯、盒等<b>盛裝用容器</b>。一定要附<b>應回收容器責任業者登記</b>。再生料算在「容器本體」。</div></div>
-      <div class="rule b22"><div class="code">2-2 再生塑膠物品</div><div class="ds">容器/包裝/粒料<b>以外</b>的再生塑膠物品。證明<b>再生料佔整體塑膠 ≥25%</b>。大豐多數產品走這條。</div></div>
-      <div class="rule b23"><div class="code">2-3 單一材質</div><div class="ds">非容器、主打單一材質。要做 FTIR/DSC/TGA <b>且不採計再生料</b>，較費工，故一般不選。</div></div>
-    </div>
-    <div class="gate">
-      ⚠️ <b>2-2 兩個門檻要同時過</b>：①<b>資格門檻</b>—含塑膠部件的物品，塑膠須佔整體總重 <b>≥50%</b>（金屬、紙、矽膠都不算塑膠）；
-      ②<b>技術門檻</b>—再生料 ÷ <u>物品塑膠部件總重</u> <b>≥25%</b>。<br>
-      💡 <b>省事關鍵</b>：若取得「<b>物品整體</b>」第三方驗證（載明整體再生料含量），可免附前一季的生產(1-2-2)／庫存(1-2-3)／採購(1-2-4)紀錄。
-    </div>
-    <div class="gate vs">
-      🔀 <b style="color:var(--green-d)">2-2 vs 2-3 是「二選一」——建議一律走 2-2</b>：兩者都用於「非容器塑膠物品」，一個產品只能選一個。
-      <table>
-        <tr><th>比較</th><th>2-2 再生塑膠物品</th><th>2-3 單一材質</th></tr>
-        <tr><td>證明什麼</td><td>再生料 ≥25%</td><td>主要部分單一材質、好回收</td></tr>
-        <tr><td>採計再生料？</td><td>✅ 採計（大豐的賣點）</td><td>❌ 不採計再生料</td></tr>
-        <tr><td>要做的檢驗</td><td>GRS＋追溯（已有）</td><td>FTIR＋DSC＋TGA＋銅棒燃燒（要送實驗室）</td></tr>
-      </table>
-      👉 大豐核心是「100% 再生」且已有 GRS，走 2-2 直接採計再生料、又免多做檢測；2-3 反而不採計再生料還要多花檢驗費。<b>故目前 13 項全部走 2-2／2-1，不需動用 2-3</b>（除非某產品無法證明再生料、但主打單一材質好回收）。
-    </div>
-  </div>
-
   <!-- 共通文件 -->
-  <h2 class="sec">③ 共通文件（12 項每一件都要）</h2>
+  <h2 class="sec">② 共通文件（10 項每一件都要）</h2>
   <div class="panel">
     <p class="hint">每一項產品都是「一產品一份」，以下這組附表每件都要各備一份；勾選會自動存在瀏覽器。</p>
     <ul class="ck common-list">
       <li><input type="checkbox" id="cm1"><label for="cm1"><b>附表 2-1</b> 使用循環標誌申請書（線上填、網站提出者免上傳）</label></li>
       <li><input type="checkbox" id="cm2"><label for="cm2"><b>附表 2-2</b> 申請規格品項明細（線上填、勾對應品項）</label></li>
-      <li><input type="checkbox" id="cm3"><label for="cm3"><b>附表 2-3</b> 工廠登記資訊（線上填）＋ 工廠登記證明影本</label></li>
+      <li><input type="checkbox" id="cm3"><label for="cm3"><b>附表 2-3</b> 工廠登記資訊（線上填）＋ 工廠登記證明影本 —— <b>填「實際製造該產品的代工廠」八碼登記編號</b>，非全興廠（粒料廠）；一家工廠可對應多個品項；代工廠免辦登記者填「免辦」＋附免辦理工廠登記函。<b>適用塑膠類 8 項</b>；紡織 2 項以品牌商身分免附 2-3（切結清單仍要填編號）</label></li>
       <li><input type="checkbox" id="cm4"><label for="cm4"><b>附表 2-4</b> 切結書（<b>蓋公司大小章</b>、兩頁以上加蓋騎縫章、需上傳）</label></li>
       <li><input type="checkbox" id="cm5"><label for="cm5">未使用列管毒化物／蒙特婁議定書物質聲明（切結書已含）</label></li>
       <li><input type="checkbox" id="cm6"><label for="cm6">（如有）產品實績、符合國家標準證明</label></li>
@@ -242,49 +215,55 @@
 
   <!-- 進度 + 篩選 -->
   <!-- 備料盤點 -->
-  <h2 class="sec">④ 我們的備料盤點（已有 / 待準備）</h2>
+  <h2 class="sec">③ 我們的備料盤點（已有 / 待準備）</h2>
   <div class="panel">
-    <p class="hint" style="margin-bottom:6px">依大豐現有文件與規範盤點。<b>圖例</b>：<span class="st ok">✅ 有現成</span> <span class="st part">⭕ 有底料·要整理成表</span> <span class="st no">❌ 沒有·要取得/製作</span> <span class="st q">❓ 待確認</span>　｜　各附件的實際內容，點下方第 ⑤ 節產品卡的「📄 點開看附表」可展開。</p>
+    <p class="hint" style="margin-bottom:6px">依大豐現有文件與規範盤點。<b>圖例</b>：<span class="st ok">✅ 有現成</span> <span class="st part">⭕ 有底料·要整理成表</span> <span class="st no">❌ 沒有·要取得/製作</span> <span class="st q">❓ 待確認</span> <span class="st q">－ 已不需要</span>　｜　各附件的實際內容，點下方第 ④ 節產品卡的「📄 點開看附表」可展開。</p>
     <div class="invwrap">
     <table class="inv">
       <thead><tr><th>資料項目</th><th>狀態</th><th>我們現有的是什麼</th><th>對應附件／用途</th><th>適用產品</th></tr></thead>
       <tbody>
         <tr class="sep"><td colspan="5">A. 公司／資格（每件都要）</td></tr>
         <tr><td>公司／商業登記證明</td><td><span class="st ok">✅</span></td><td>公司營業登記</td><td>加入會員上傳、切結書資料</td><td>全部</td></tr>
-        <tr><td>工廠登記證明</td><td><span class="st ok">✅</span></td><td><b>全興廠區</b>工廠登記</td><td>附表2-3 ＋ 申請書勾工廠登記</td><td>全部</td></tr>
+        <tr><td>工廠登記證明（全興廠＝粒料端）</td><td><span class="st ok">✅</span></td><td><b>全興廠區</b>工廠登記（再生粒子生產端）</td><td>會員資格文件＋追溯鏈源頭（對應 1-2-2/1-2-4、GRS 廠區）；<b>非</b>附表2-3 填的對象</td><td>全部</td></tr>
+        <tr><td><b>各產品代工廠</b>工廠登記</td><td><span class="st no">❌</span></td><td>尚未盤點：10 項產品各由哪家代工廠製造</td><td>塑膠類 8 項（2-1＋2-3）填<b>附表2-3</b>（成品製造廠八碼編號＋登記證明影本）；紡織 2 項免附 2-3，但<b>切結清單仍要填編號</b>；須逐一向代工廠索取</td><td>全部</td></tr>
         <tr><td>統編／負責人／聯絡人</td><td><span class="st ok">✅</span></td><td>公司基本資料</td><td>申請書 附表2-1</td><td>全部</td></tr>
 
-        <tr class="sep"><td colspan="5">B. 再生料驗證（2-2／2-1 技術核心）</td></tr>
-        <tr><td><b>GRS</b>（粒料階段）</td><td><span class="st ok">✅</span></td><td>驗你們的<b>再生粒子</b>（證明 100% 回收）</td><td>附表1-2-4 表格2（料源驗證）／2-1 附表1-1-1 再生料驗證欄</td><td>所有再生塑膠產品</td></tr>
-        <tr><td><b>RCS</b></td><td><span class="st ok">✅</span></td><td>Recycled Claim Standard</td><td>清單內可用之再生料驗證</td><td>同上</td></tr>
-        <tr><td>GRS「TC 交易證明」載明含量</td><td><span class="st q">❓</span></td><td><b>待確認</b>：拿到的是 SC 還是含含量的 TC</td><td>證明再生料比例要用 <b>TC</b></td><td>2-2／2-1</td></tr>
-        <tr><td>成品「物品整體」驗證</td><td><span class="st no">❌</span></td><td>目前 GRS 只到粒料</td><td>有的話可<b>免附</b>前一季 3 張表</td><td>（日後升級）</td></tr>
+        <tr class="sep"><td colspan="5">B. 再生料驗證（2-1 容器／紡織 1-1-2 技術核心）</td></tr>
+        <tr><td><b>GRS</b>（粒料階段）</td><td><span class="st ok">✅</span></td><td><b>大豐自有 GRS SC</b>（Control Union CU1024125GRS-2025-00094127，後消費材料 PC0035，<b>效期至 2026-08-24</b>）。⚠️ 手上僅第 1/3 頁，須補齊含 Product Appendix 之完整 3 頁並確認涵蓋 rPP/rPE 粒料。南亞 GRS（IDFL）已於 2023-12-17 過期，勿附</td><td>2-1 附表1-1-1 再生料驗證欄／紡織類供應鏈佐證</td><td>2-1 三項＋紡織 2 項</td></tr>
+        <tr><td><b>RCS</b></td><td><span class="st q">❓</span></td><td><b>證書未尋獲</b>：檔名「RCS 回收含量標準」的圖檔實為 Intertek rPE 粒子（N610HF）測試報告第 1/8 頁</td><td>清單內可用之再生料驗證（如確有 RCS 證書請找出正本）</td><td>同上</td></tr>
+        <tr><td>GRS「TC 交易證明」載明含量</td><td><span class="st no">❌</span></td><td><b>已確認缺</b>：南亞、大豐兩張皆為 SC（範圍證書），SC 明載不證明個別出貨。須向料源供應商索取出貨批次 TC；大豐自售粒料則向 Control Union 申請。<b>0721 後需求縮小：僅 2-1 三項容器還需要</b></td><td>證明再生料比例要用 <b>TC</b>（含量%＝再生料計算依據）</td><td>2-1（噴霧瓶、隨行杯、餐盒）</td></tr>
+        <tr><td><b>布料/紗線階段</b>再生料驗證（紡織類）</td><td><span class="st no">❌</span></td><td>粒料 GRS 不滿足此項，須織布/織帶供應商之 UL 2809 或等效（GRS/RCS）證明</td><td>紡織類 1-1-2 技術核心（唯一必備技術文件）</td><td>包包袋子、手機掛繩</td></tr>
 
-        <tr class="sep"><td colspan="5">C. 追溯／紀錄（2-2 走料源驗證時要）</td></tr>
-        <tr><td>再生料採購紀錄（前一季）</td><td><span class="st part">⭕</span></td><td>訂單／發票／運輸單</td><td>附表1-2-4 表格1</td><td>2-2（無整體驗證時）</td></tr>
-        <tr><td>生產／內部追溯紀錄（前一季）</td><td><span class="st part">⭕</span></td><td>工廠生產紀錄</td><td>附表1-2-2</td><td>2-2</td></tr>
-        <tr><td>庫存／存貨紀錄（前一季）</td><td><span class="st part">⭕</span></td><td>進出貨紀錄</td><td>附表1-2-3</td><td>2-2</td></tr>
-        <tr><td>再生料比率計算表</td><td><span class="st no">❌</span></td><td>要依 BOM 逐件填算</td><td>附表1-2-1</td><td>每個 2-2 產品</td></tr>
+        <tr class="sep"><td colspan="5">C. 追溯紀錄／檢驗（依品項而定）</td></tr>
+        <tr><td>再生料採購／生產／庫存紀錄（前一季三表）</td><td><span class="st q">－</span></td><td>訂單／發票／生產／進出貨紀錄</td><td>附表1-2-2/1-2-3/1-2-4</td><td><b>0721 後：已無產品需要</b>（2-2 品項歸零；紀錄仍建議按季留存備查）</td></tr>
+        <tr><td>再生料比率計算表（容器本體 ≥25%）</td><td><span class="st no">❌</span></td><td>要依 BOM 逐件填算：[再生料添加量×含量%]÷容器本體總重</td><td>2-1 附表1-1-1 內計算</td><td>噴霧瓶、隨行杯、餐盒</td></tr>
+        <tr><td><b>2-3 實驗室檢驗報告</b>（FTIR/DSC/TGA、銅棒燃燒）</td><td><span class="st no">❌</span></td><td>尚未送測；5 項可合併送實驗室</td><td>附表1-3-3</td><td>名片盒、證件套、資料夾、存錢筒、餐具組</td></tr>
 
         <tr class="sep"><td colspan="5">D. 材質／食品接觸／容器（特定品項才要）</td></tr>
-        <tr><td>成分分析／材質報告（無 PVC、材質單一）</td><td><span class="st q">❓</span></td><td><b>待確認</b>（目前應無）</td><td>附表1-1-1 備註（2-1）｜2-3 用 FTIR/DSC/TGA（附表1-3-3）</td><td>噴霧瓶、餐盒</td></tr>
-        <tr><td>衛福部 PET 再製酯粒核備</td><td><span class="st q">❓</span></td><td><b>待確認</b>：rPET 料源工廠是否在 4 家名單內</td><td>附表1-1-1 食品接觸欄（見第 ⑥ 節名單）</td><td>餐具組、隨行杯、餐盒</td></tr>
-        <tr><td>應回收容器責任業者登記／查詢截圖</td><td><span class="st q">❓</span></td><td><b>待確認</b>：是否辦過登記</td><td>2-1 前置文件</td><td>噴霧瓶、餐盒</td></tr>
+        <tr><td>成分分析／材質報告（無 PVC）</td><td><span class="st q">❓</span></td><td><b>待確認</b>（目前應無）</td><td>2-1 附表1-1-1 備註欄用（2-3 五項的檢驗已列於 C 區，勿重複）</td><td>噴霧瓶、隨行杯、餐盒</td></tr>
+        <tr><td>衛福部 PET 再製酯粒核備</td><td><span class="st part">⭕</span></td><td>好消息：rPET 料源為<b>南亞 380R</b>（產品說明書已在手），南亞工三廠即核備名單第 2 家（99621823）。待辦：向南亞確認 380R 產自<b>工三廠</b>＋索取<b>核備函影本</b>（衛授食字第1121300660號）</td><td>附表1-1-1 食品接觸欄（見第 ⑤ 節名單）</td><td>餐具組、隨行杯、餐盒</td></tr>
+        <tr><td>應回收容器責任業者登記／查詢截圖</td><td><span class="st q">❓</span></td><td><b>待確認</b>：是否辦過登記</td><td>2-1 前置文件</td><td>噴霧瓶、隨行杯、餐盒</td></tr>
 
         <tr class="sep"><td colspan="5">E. 表單與加分資料</td></tr>
         <tr><td>切結書（蓋公司大小章）</td><td><span class="st no">❌</span></td><td>要製作＋用印</td><td>附表2-4</td><td>全部</td></tr>
         <tr><td>申請書／品項明細／工廠登記資訊</td><td><span class="st ok">✅</span></td><td>線上系統填</td><td>附表2-1／2-2／2-3（網站填、免上傳）</td><td>全部</td></tr>
-        <tr><td>FDA NOL／CFR FDA／EU No.10</td><td><span class="st ok">✅</span></td><td>國外食品接觸報告</td><td><b>輔助</b>（非台灣衛福部核備）</td><td>食品接觸產品</td></tr>
-        <tr><td>ISO 9001/14001/45001/14067/27001、減碳75%、Sedex</td><td><span class="st ok">✅</span></td><td>管理系統／碳足跡</td><td>有利審查加分（選附）</td><td>全部</td></tr>
+        <tr><td>FDA NOL／CFR FDA／EU No.10</td><td><span class="st part">⭕</span></td><td>實際可用：昶信 BV 報告（2019，FDA 21 CFR 177.1630 溶出 PASS，樣品為 PET plate）。⚠️ <b>四張圖檔檔名與內容不符</b>：「CFR FDA」實為 SVHC(REACH) 報告、「EU No.10」實為 RoHS 報告、「FDA NOL」實為 EuCertPlast 證書（<b>已過期 2023-10-16</b>）、「RCS」實為 rPE 測試報告 → 先更正檔名再上傳；真正的 FDA NOL／EU No.10 未見</td><td><b>輔助</b>（非台灣衛福部核備）；SVHC/RoHS 可作無有害物質佐證</td><td>食品接觸產品</td></tr>
+        <tr><td>ISO 9001/14001/45001/14067/27001、減碳75%、Sedex</td><td><span class="st part">⭕</span></td><td>⚠️ ISO 14067 碳足跡（TÜV）<b>已過期 2023-11-30</b>、EuCertPlast <b>已過期 2023-10-16</b>——有續證再附，過期勿附；其餘管理系統證書效期待逐一確認</td><td>有利審查加分（選附）</td><td>全部</td></tr>
       </tbody>
     </table>
     </div>
     <div class="invsum">
-      🎯 <b>現在最該去問／查的 4 件「待確認」</b>：①GRS 拿到的是否為<b>載明含量的 TC</b>　②<b>成分分析/材質報告</b>有沒有（2-1 噴霧瓶、餐盒要）　③rPET 料源工廠是否在<b>衛福部核備名單</b>　④噴霧瓶/餐盒有沒有辦<b>應回收容器責任業者登記</b>。其餘「⭕」的前一季紀錄，請開始按季整理留存。
+      🎯 <b>現在最該去辦的 6 件事（0721 二次更新：品項重整後）</b>：
+      ①<b>2-3 五項送實驗室檢驗</b>（FTIR/DSC/TGA＋銅棒燃燒，名片盒/證件套/資料夾/存錢筒/餐具組合併送測）——附表1-3-3 用
+      ②向織布/織帶供應商索取<b>布料或紗線階段的再生料驗證</b>（UL 2809 或等效 GRS/RCS）——紡織類 2 項的唯一技術文件
+      ③向南亞確認 380R 產自<b>工三廠（99621823）</b>並索取<b>衛福部核備函影本</b>（餐具組 2-3、隨行杯/餐盒 2-1 都要，食品安全法規面）
+      ④噴霧瓶/隨行杯/餐盒（2-1 三項）：<b>應回收容器責任業者登記</b>＋<b>TC 交易證明</b>（TC 需求已縮小到只剩這 3 項）
+      ⑤盤出 10 項產品的<b>成品代工廠八碼工廠登記編號</b>（塑膠類附表2-3＋切結清單用）
+      ⑥補齊<b>大豐 GRS 證書完整 3 頁</b>＋更正 4 個檔名錯誤的圖檔。前一季三表已無產品需要（仍建議按季留存備查）。
     </div>
   </div>
 
-  <h2 class="sec">⑤ 13 產品分類與各自應備文件</h2>
+  <h2 class="sec">④ 10 產品分類與各自應備文件（0721 定案：紡織 2＋容器 3＋單一材質 5）</h2>
   <div class="overall">
     <button class="reset" onclick="resetAll()">清除全部勾選</button>
     <b>📊 整體備料進度</b>
@@ -293,11 +272,11 @@
   </div>
 
   <div class="filters">
-    <button class="on" data-f="all" onclick="flt('all',this)">全部（13）</button>
-    <button data-f="22" onclick="flt('22',this)">2-2 再生塑膠物品（9）</button>
-    <button data-f="21" onclick="flt('21',this)">2-1 容器（2）</button>
-    <button data-f="tbd" onclick="flt('tbd',this)">待確認（2）</button>
-    <button data-f="risk" onclick="flt('risk',this)">⚠️ 有風險（5）</button>
+    <button class="on" data-f="all" onclick="flt('all',this)">全部（10）</button>
+    <button data-f="tx" onclick="flt('tx',this)">紡織類 1-1-2（2）</button>
+    <button data-f="21" onclick="flt('21',this)">2-1 容器（3）</button>
+    <button data-f="23" onclick="flt('23',this)">2-3 單一材質（5）</button>
+    <button data-f="risk" onclick="flt('risk',this)">⚠️ 有風險（4）</button>
   </div>
 
   <p class="hint" style="margin:-4px 0 12px">💡 文件清單中凡標有附表編號者，下方會出現 <b style="color:#1b5e3a">▸ 📄 點開看附表</b> 摺疊框，點開即可看到該附表的實際內容（跨頁的一次顯示多頁），不必另外翻 PDF。</p>
@@ -305,10 +284,10 @@
   <div class="cards" id="cards"><!-- JS 產生 --></div>
 
   <!-- 衛福部 PET 核備名單 -->
-  <h2 class="sec">⑥ 食品接觸 rPET 廠商核備名單（餐具組／隨行杯／餐盒 必查）</h2>
+  <h2 class="sec">⑤ 食品接觸 rPET 廠商核備名單（隨行杯／餐盒／餐具組 必查）</h2>
   <div class="panel petcard">
     <p class="hint" style="margin-bottom:2px">
-      餐具組（#10）、隨行杯（#11）、餐盒（#12）等<b>接觸食品</b>的 rPET 產品，其再生 PET 酯粒來源工廠必須在衛福部食藥署
+      隨行杯（#4）、餐盒（#5）、餐具組（#10）等<b>接觸食品</b>的 rPET 產品，其再生 PET 酯粒來源工廠必須在衛福部食藥署
       「供作食品容器具包裝之 PET 再製酯粒原料適宜性」<b>核備名單</b>內。
       👉 <b>請拿下表去跟我們製作 rPET 產品的供應商確認：他們的再生 PET 料源工廠與工廠登記編號，是否就是名單中的其中一家。</b>
     </p>
@@ -330,79 +309,69 @@
   </div>
 
   <!-- 地雷 / 待確認 -->
-  <h2 class="sec">⑦ 送件前務必處理的地雷</h2>
+  <h2 class="sec">⑥ 送件前務必處理的地雷</h2>
   <div class="panel pit">
     <ul>
-      <li><b>筆記本 塑膠佔比恐 &lt;50%</b>：內頁再生紙很重，塑膠封面封底可能達不到 50% → 2-2 資格不足。先秤重；若不足，改走申請書上的「<b>非公告品項自我聲明</b>」（附表 2-4，以『使用再生材料』特性申請）。</li>
-      <li><b>食品接觸的 rPET（餐具組、隨行杯、餐盒）</b>：再生 PET 料源工廠須在<b>衛福部核備名單</b>內（見上方第 ⑥ 節，拿去跟供應商核對料源工廠與登記編號）；或輸入品的符合／自由銷售證明。此為食品級再生料關鍵文件，務必及早確認。</li>
-      <li><b>容器判定（隨行杯）</b>：規格把「容器」排除在 2-2/2-3 外，「杯」算不算容器會決定走 2-1（要責任業者登記）或 2-2 → <b>打電話問署</b>：曾韻璇 (02)2370-5888#30321。（餐盒已確定為容器，走 2-1）</li>
-      <li><b>金屬件的 50% 門檻（手機掛繩、原子筆）</b>：金屬釦／彈簧非塑膠會壓低塑膠佔比，須先秤：塑膠 ÷ 整體 ≥50%，且 rPP 部件 ÷ 塑膠總重 ≥25%。</li>
-      <li><b>噴霧瓶 責任業者登記</b>：走 2-1 一定要附應回收容器責任業者登記表／申報系統查詢截圖，若不確定是否適用，一併問署。</li>
+      <li><b>食品接觸的 rPET（餐具組、隨行杯、餐盒）</b>：再生 PET 料源工廠須在<b>衛福部核備名單</b>內（見上方第 ⑤ 節，拿去跟供應商核對料源工廠與登記編號）；或輸入品的符合／自由銷售證明。此為食品級再生料關鍵文件，務必及早確認。</li>
+      <li><b>2-1 容器三項（噴霧瓶、隨行杯、餐盒）</b>：隨行杯已定案屬容器走 2-1。三項都要<b>應回收容器責任業者登記</b>；隨行杯、餐盒另需衛福部 PET 核備；TC 交易證明現在只剩這三項需要（證明容器本體再生料 ≥25%）。</li>
+      <li><b>2-3 的實驗室檢驗（名片盒、證件套、資料夾、存錢筒、餐具組）</b>：附表1-3-3 需 FTIR/DSC/TGA＋銅棒燃燒檢驗報告，要送實驗室（如塑膠中心、SGS），5 項可一起送測省時省費；且 2-3 標章<b>不採計再生料</b>，行銷文案勿再以標章宣稱「使用再生料」，避免誤導消費者違規。</li>
+      <li><b>紡織類 2 項的驗證階段（包包、掛繩）</b>：1-1-2 要的是<b>布料或紗線階段</b>的再生料驗證（UL 2809 或等效），大豐粒料 GRS 不能直接充當——若織布/織帶是外包，供應商沒有 GRS/RCS 認證的話，這條鏈就斷了，須及早確認供應商認證狀態。GRS/RCS 是否算「等效標準」也建議跟窗口一句話確認。</li>
+      <li><b>檔名與內容不符（0721 盤點發現）</b>：「CFR FDA」＝SVHC 報告、「EU No.10」＝RoHS 報告、「FDA NOL」＝EuCertPlast、「RCS」＝rPE 測試報告。<b>上傳前務必更正檔名</b>，張冠李戴會被審查退補。</li>
+      <li><b>過期證書勿附</b>：南亞 GRS（2023-12-17 到期）、EuCertPlast（2023-10-16 到期）、ISO 14067 碳足跡（2023-11-30 到期）。附過期文件不加分反扣分；有續證再放。</li>
+      <li><b>耐熱餐具用 7720 酯粒是否含再生料待確認</b>：南亞 7720 說明書全文<b>未載明含再生料</b>（380R 才明寫以回收寶特瓶為原料）。餐具組改走 2-3 後雖不必證明再生料比率，但仍影響兩件事：①產品名稱「rPET」的宣稱是否成立（切結書不得誤導消費者）；②若實為原生 PET，衛福部再製酯粒核備的適用性也不同——向南亞確認 7720 成分後再定案。</li>
     </ul>
   </div>
 
-  <h2 class="sec">⑧ 官方入口</h2>
+  <h2 class="sec">⑦ 官方入口</h2>
   <div class="panel">
     <ul style="margin:0;padding-left:18px;font-size:13.5px">
       <li>申請平台：<a href="https://tcpip.moenv.gov.tw/" target="_blank">tcpip.moenv.gov.tw</a>（先註冊會員）｜指引下載：<a href="https://tcpip.moenv.gov.tw/source/category-9/post-133" target="_blank">category-9／post-133</a></li>
       <li>洽詢：環境部資源循環署　曾韻璇　<b>(02)2370-5888 #30321</b>｜yunhsuan.tseng@moenv.gov.tw</li>
-      <li>技術規格文號（115/5/28 生效）：2-1=…537B／2-2=…537C／2-3=…537D</li>
+      <li>技術規格文號（115/5/28 生效）：塑膠類 2-1=…537B／2-2=…537C／2-3=…537D；紡織類（1-1／1-2）依第一冊公告（1150626）</li>
     </ul>
   </div>
 
-  <footer>本 Dashboard 依資料夾內官方文件整理，文件清單對照 115/5/28 正式公告版與塑膠類申請指引。分類含判斷建議，最終品項與容器認定以資源循環署確認為準。｜檔名 0702｜製作 2026-07-02</footer>
+  <footer>本 Dashboard 依資料夾內官方文件整理，文件清單對照 115/5/28 正式公告版、申請指引第一冊（紡織類）與第二冊（塑膠類）。品項分類已於 2026-07-21 定案（含署窗口確認事項），最終認定以資源循環署為準。｜檔名 0702｜製作 2026-07-02・更新 2026-07-21</footer>
 </div>
 
 <script>
   // ===== 產品資料 =====
-  // cat: 21 / 22 / tbd ; risk:true 會被「有風險」篩選抓到
+  // cat: tx(紡織 1-1-2) / 21(容器) / 23(單一材質) ; risk:true 會被「有風險」篩選抓到
   const PRODUCTS=[
-    {id:13,cat:'22',name:'rPP 包包袋子（純袋身）',badge:'2-2',badgeCls:'b22bg',
-      why:'無織標、無塑膠釦，100% rPP 單一材質；50% 與 25% 門檻皆輕鬆過（亦可走 2-3 單一材質，但建議 2-2）',
-      docs:['附表1-2-1 再生料使用比率說明表（單一材質、整體再生料 100%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有成品整體驗證可免）','再生料第三方驗證（GRS 粒料＋追溯紀錄，或成品整體驗證）']},
-    {id:1,cat:'22',name:'rPP 包包袋子',badge:'2-2',badgeCls:'b22bg',
-      why:'袋身 rPP，織標/塑膠釦/拉鍊等為新料或非塑膠材料；非容器再生塑膠物品',
-      docs:['附表1-2-1 再生料使用比率說明表（算整體塑膠≥25%）＋商品照片','附表1-2-2/1-2-3/1-2-4 前一季生產/庫存/採購紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證（建議做物品整體驗證）']},
-    {id:2,cat:'22',name:'rPP 手機掛繩',badge:'2-2',badgeCls:'b22bg',risk:true,
-      why:'繩身 rPP，金屬釦＋織標；非容器物品',
-      risktext:'金屬釦較重，須先秤：塑膠佔整體總重 ≥50% 才有資格',
-      docs:['⚖️ 先秤重：塑膠 ÷ 整體 ≥50%（金屬釦不算塑膠）','附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:3,cat:'22',name:'rPP 識別證盒',badge:'2-2',badgeCls:'b22bg',
-      why:'100% rPP、非容器、單一材質；全塑膠門檻易過',
-      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:4,cat:'22',name:'rPP 證件套',badge:'2-2',badgeCls:'b22bg',
-      why:'100% rPP、非容器；全塑膠門檻易過',
-      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:5,cat:'22',name:'rPP 原子筆',badge:'2-2',badgeCls:'b22bg',risk:true,
-      why:'筆管 rPP，彈簧＋筆芯為新料；非容器物品',
-      risktext:'彈簧金屬＋筆芯新料，須確認塑膠≥50% 且筆管佔塑膠總重≥25%',
-      docs:['⚖️ 先秤重：塑膠 ÷ 整體 ≥50%；筆管(rPP) ÷ 塑膠總重 ≥25%','附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:6,cat:'22',name:'rPP 資料夾',badge:'2-2',badgeCls:'b22bg',
-      why:'100% rPP、非容器；全塑膠門檻易過',
-      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:7,cat:'22',name:'rPP DIY 存錢筒',badge:'2-2',badgeCls:'b22bg',
-      why:'100% rPP、非容器；全塑膠門檻易過',
-      docs:['附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:8,cat:'tbd',name:'rPP＋再生紙 筆記本',badge:'資格待確認',badgeCls:'tbdbg',risk:true,
-      why:'封面封底 rPP，內頁 FSC 再生紙；紙＋塑膠混合物',
-      risktext:'內頁紙很重，塑膠恐 <50% → 2-2 資格不足；先秤重，或改走非公告品項',
-      docs:['⚖️ 先秤重：塑膠封面封底 ÷ 整本 是否 ≥50%','若 ≥50% → 走 2-2（同其他 2-2 文件）','若 <50% → 改走「非公告品項」路徑（於申請書附表2-2 第二部分填循環特性說明：使用再生材料）','向署確認可行路徑','再生料第三方驗證／再生紙 FSC 證明']},
+    {id:1,cat:'tx',name:'rPP 包包袋子',badge:'紡織 1-1-2',badgeCls:'txbg',
+      why:'袋身 rPP 織物；改依紡織品類 1-1-2（署窗口確認）。1-1-2 無「不得混 2 種以上纖維」限制，織標/拉鍊不卡關；免前一季三表、無 50%/25% 門檻',
+      docs:['附表1-3 產品（商品）基本資料表（主布料/裡布/配件材質與比率、加工說明、照片、洗標）','布料或紗線階段之第三方再生料驗證（UL 2809 或等效標準如 GRS/RCS）——向織布供應商索取','大豐 GRS（粒料）＋供應鏈佐證','切結清單填製造工廠登記編號（八碼）','📧 將署窗口「rPP 可走 1-1-2」答覆留成書面紀錄（email 確認）']},
+    {id:2,cat:'tx',name:'rPP 手機掛繩',badge:'紡織 1-1-2',badgeCls:'txbg',
+      why:'繩帶為 rPP 織帶；改依紡織品類 1-1-2（署窗口確認）。紡織類無 50% 塑膠門檻，金屬釦不再是風險',
+      docs:['附表1-3 產品（商品）基本資料表（繩帶/金屬釦/織標材質組成、照片）','織帶（紗線）階段之第三方再生料驗證（UL 2809 或等效標準如 GRS/RCS）——向織帶供應商索取','大豐 GRS（粒料）＋供應鏈佐證','切結清單填製造工廠登記編號（八碼）']},
     {id:9,cat:'21',name:'rHDPE 噴霧瓶',badge:'2-1',badgeCls:'b21bg',risk:true,
       why:'瓶身 rHDPE，噴頭/彈簧/蓋為新料；瓶＝容器',
       risktext:'須辦應回收容器責任業者登記；再生料算在「瓶身本體」',
       docs:['應回收容器責任業者登記表／申報系統查詢截圖','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']},
-    {id:10,cat:'22',name:'rPET 餐具組（筷/匙）',badge:'2-2',badgeCls:'b22bg',risk:true,
-      why:'餐具非容器；100% rPET',
-      risktext:'食品接觸 → 需衛福部 PET 再製酯粒適宜性核備',
-      docs:['🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-2-1 再生料使用比率說明表＋照片','附表1-2-2/1-2-3/1-2-4 前一季紀錄（有整體驗證可免）','塑膠成分分析表','再生料第三方驗證']},
-    {id:11,cat:'tbd',name:'rPET 隨行杯',badge:'品項待確認',badgeCls:'tbdbg',risk:true,
-      why:'100% rPET；「杯」是否算容器須確認',
-      risktext:'容器→2-1（要責任業者登記）；非容器→2-2。且食品接觸需 PET 核備',
-      docs:['📞 向署確認：隨行杯算不算「容器」','🍽️ 衛福部 PET 再製酯粒適宜性核備（食品接觸）','若 2-1：責任業者登記＋附表1-1-1＋成分分析＋再生料驗證','若 2-2：附表1-2-1＋前一季紀錄（或整體驗證）＋成分分析＋再生料驗證']},
+    {id:11,cat:'21',name:'rPET 隨行杯',badge:'2-1',badgeCls:'b21bg',risk:true,
+      why:'100% rPET；杯＝容器，定案走 2-1（0721）',
+      risktext:'須辦應回收容器責任業者登記；食品接觸需衛福部 PET 核備；再生料算在「杯身本體」',
+      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']},
     {id:12,cat:'21',name:'rPET 餐盒',badge:'2-1',badgeCls:'b21bg',risk:true,
       why:'盒身 rPET，矽膠條為新料；餐盒＝容器',
       risktext:'須辦應回收容器責任業者登記；食品接觸需衛福部 PET 核備；再生料算在「盒身本體」',
-      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']}
+      docs:['應回收容器責任業者登記表／申報系統查詢截圖','🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵）','附表1-1-1（使用再生料）','塑膠成分分析表（新料＋再生料；矽膠條非 PVC 說明）','再生料驗證證書（勾範圍：粒料/容器本體/容器商品）','計算：[再生料添加量×含量%] ÷ 容器本體總重 ≥25%']},
+    {id:3,cat:'23',name:'rPP 名片盒',badge:'2-3',badgeCls:'b23bg',
+      why:'100% rPP 單一材質，改走 2-3 單一材質設計（免 TC、免前一季三表；不採計再生料）',
+      docs:['附表1-3-1 單一材質自我聲明書（蓋公司大小章）','附表1-3-2 單一材質設計塑膠產品照片','附表1-3-3 實驗室檢驗（FTIR/DSC/TGA、銅棒燃燒）或第三方認驗證證明——需送實驗室','⚠️ 2-3 不採計再生料：標章代表「單一材質好回收」']},
+    {id:4,cat:'23',name:'rPP 證件套',badge:'2-3',badgeCls:'b23bg',
+      why:'100% rPP 單一材質，改走 2-3 單一材質設計（免 TC、免前一季三表；不採計再生料）',
+      docs:['附表1-3-1 單一材質自我聲明書（蓋公司大小章）','附表1-3-2 單一材質設計塑膠產品照片','附表1-3-3 實驗室檢驗（FTIR/DSC/TGA、銅棒燃燒）或第三方認驗證證明——需送實驗室','⚠️ 2-3 不採計再生料：標章代表「單一材質好回收」']},
+    {id:6,cat:'23',name:'rPP 資料夾',badge:'2-3',badgeCls:'b23bg',
+      why:'100% rPP 單一材質，改走 2-3 單一材質設計（免 TC、免前一季三表；不採計再生料）',
+      docs:['附表1-3-1 單一材質自我聲明書（蓋公司大小章）','附表1-3-2 單一材質設計塑膠產品照片','附表1-3-3 實驗室檢驗（FTIR/DSC/TGA、銅棒燃燒）或第三方認驗證證明——需送實驗室','⚠️ 2-3 不採計再生料：標章代表「單一材質好回收」']},
+    {id:7,cat:'23',name:'rPP DIY 存錢筒',badge:'2-3',badgeCls:'b23bg',
+      why:'100% rPP 單一材質，改走 2-3 單一材質設計（免 TC、免前一季三表；不採計再生料）',
+      docs:['附表1-3-1 單一材質自我聲明書（蓋公司大小章）','附表1-3-2 單一材質設計塑膠產品照片','附表1-3-3 實驗室檢驗（FTIR/DSC/TGA、銅棒燃燒）或第三方認驗證證明——需送實驗室','⚠️ 2-3 不採計再生料：標章代表「單一材質好回收」']},
+    {id:10,cat:'23',name:'rPET 餐具組（筷/匙）',badge:'2-3',badgeCls:'b23bg',risk:true,
+      why:'100% rPET 單一材質，改走 2-3 單一材質設計（免 TC、免前一季三表；不採計再生料）',
+      risktext:'材質仍為 rPET 且接觸食品 → 衛福部 PET 再製酯粒核備仍必要（食品安全法規面，與品項認定無關）',
+      docs:['🍽️ 衛福部「PET 再製酯粒原料適宜性」核備（食品接觸關鍵，仍必備）','附表1-3-1 單一材質自我聲明書（蓋公司大小章）','附表1-3-2 單一材質設計塑膠產品照片','附表1-3-3 實驗室檢驗（FTIR/DSC/TGA、銅棒燃燒）或第三方認驗證證明——需送實驗室','⚠️ 2-3 不採計再生料：標章代表「單一材質好回收」']},
   ];
 
   // ===== 2-1 專用說明（應回收容器責任業者登記）=====
@@ -475,8 +444,8 @@
     document.querySelectorAll('.pcard').forEach(c=>{
       let show=true;
       if(f==='21')show=c.dataset.cat==='21';
-      else if(f==='22')show=c.dataset.cat==='22';
-      else if(f==='tbd')show=c.dataset.cat==='tbd';
+      else if(f==='23')show=c.dataset.cat==='23';
+      else if(f==='tx')show=c.dataset.cat==='tx';
       else if(f==='risk')show=c.dataset.risk==='1';
       c.classList.toggle('hide',!show);
     });
@@ -521,7 +490,7 @@
     });
   }
 
-  // ===== 把 ①~⑧ 每一大項包成可摺疊（預設收合）=====
+  // ===== 把 ①~⑦ 每一大項包成可摺疊（預設收合）=====
   function foldSections(){
     const wrap=document.querySelector('.wrap');
     const heads=[...wrap.querySelectorAll('h2.sec')];
